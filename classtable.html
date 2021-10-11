@@ -1,0 +1,19 @@
+<table style="text-align:left">
+    <tr>
+        <th>ClassId</th>
+        <th>Dept</th>
+        <th>Num</th>
+        <th>Area</th>
+        <th>Title</th>
+    </tr>
+    {% for class in classes: %}
+        <tr>
+            <!-- TODO: DEAL WITH HREF -->
+            <td><a href="">{{class.get_class_id()}}</a></td>
+            <td>{{class.get_dept()}}</td>
+            <td>{{class.get_number()}}</td>
+            <td>{{class.get_area()}}</td>
+            <td>{{class.get_title()}}</td>
+        </tr>
+    {% endfor %}
+</table>

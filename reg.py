@@ -78,6 +78,14 @@ def index():
 # TODO - get rid of this method - we do not need it anymore
 @app.route('/regdetails', methods=['GET'])
 def reg_details():
+    # thoughts on cookies:
+    # - not quite sure when we set the cookie
+    #   maybe do it every time we do a search in the main
+    # - get the cookie every time we eneter regdetails
+    #   and use it to create the url for the click here 
+    #   to do another class search method 
+    # - this uses existing mechanism for saving values 
+
     return None
 
 #-----------------------------------------------------------------------

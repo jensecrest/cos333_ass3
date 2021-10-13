@@ -1,5 +1,5 @@
-<table style="text-align:left">
-    <tr>
+<table> 
+    <tr align=left>
         <th>ClassId</th>
         <th>Dept</th>
         <th>Num</th>
@@ -8,10 +8,11 @@
     </tr>
     {% for class in classes: %}
         <tr>
-            <!-- TODO: DEAL WITH HREF -->
-            <td><a href="">{{class.get_class_id()}}</a></td>
+            <td><a href="regdetails?classid={{class.get_class_id()}}">
+                {{class.get_class_id()}}
+            </a></td>
             <td>{{class.get_dept()}}</td>
-            <td>{{class.get_number()}}</td>
+            <td>{{class.get_course_num()}}</td>
             <td>{{class.get_area()}}</td>
             <td>{{class.get_title()}}</td>
         </tr>

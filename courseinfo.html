@@ -1,9 +1,19 @@
 <h2>
-    Course Details (course id {{course_id}}) <!--TODO: GET CLASS ID?-->
+    Course Details (course id {{course_id}})
 </h2>
-<strong>Dept and Number:</strong> {{course_id}}
+{% for dept_and_num in depts_and_nums: %}
+    <strong>Dept and Number:</strong> {{dept_and_num}}
+    <br>
+{% endfor %}
 <strong>Area:</strong> {{area}}
+<br>
 <strong>Title:</strong> {{title}}
+<br>
 <strong>Description:</strong> {{descrip}}
+<br>
 <strong>Prerequisites:</strong> {{prereqs}}
-<strong>Professor:</strong> {{profs}}
+<br>
+{% for prof in profs: %}
+    <strong>Professor:</strong> {{prof}}
+    <br>
+{% endfor %}

@@ -1,17 +1,19 @@
 <!DOCTYPE html>
- <html>
-   <head>
-      <title>Registrar's Office Class Details</title>
-   </head>
-   <body>
-      {% include 'header.html' %}
-      <hr>
-      {% include 'classinfo.html' %}
-      <hr>
-      {% include 'courseinfo.html' %}
-      <hr>
-      Click here to do <a href="index.html">another class search</a>
-      <hr>
-      {% include 'footer.html' %}
-   </body>
- </html>
+    <html>
+    <head>
+        <title>Registrar's Office Class Details</title>
+    </head>
+    <body>
+        {% include 'header.html' %}
+        <hr>
+        {% include 'classinfo.html' %}
+        <hr>
+        {% include 'courseinfo.html' %}
+        <hr>
+
+        <!-- TODO: for some reason can't separate the href string- figure this out-->
+        Click here to do <a href="index?dept={{search_dept}}&coursenum={{search_num}}&area={{search_area}}&title={{search_title}}">another class search</a>
+
+        {% include 'footer.html' %}
+    </body>
+</html>

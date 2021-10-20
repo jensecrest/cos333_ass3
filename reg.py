@@ -34,7 +34,7 @@ def index():
     if dept == None:
         dept = ''
 
-    number = request.args.get('number')
+    number = request.args.get('coursenum')
     if number == None:
         number = ''
 
@@ -46,7 +46,8 @@ def index():
     if title == None:
         title = ''
 
-    search = Search(dept, area, number, title)
+    search = Search(dept, number, area, title)
+    print('here')
 
     try:
         # if we're executing a search then data will be a Search
@@ -71,102 +72,61 @@ def index():
 
     response = make_response(html)
 
+    response.set_cookie('prev_dept', dept)
+    response.set_cookie('prev_num', number)
+    response.set_cookie('prev_area', area)
+    response.set_cookie('prev_title', title)
+
     return response
 
 #-----------------------------------------------------------------------
 
-# TODO - get rid of this method - we do not need it anymore
 @app.route('/regdetails', methods=['GET'])
 def reg_details():
-    # thoughts on cookies:
-    # - not quite sure when we set the cookie
-    #   maybe do it every time we do a search in the main
-    # - get the cookie every time we eneter regdetails
-    #   and use it to create the url for the click here 
-    #   to do another class search method 
-    # - this uses existing mechanism for saving values 
 
-    return None
+    class_id = request.args.get('classid')
 
-#-----------------------------------------------------------------------
+    prev_dept = request.cookies.get('prev_dept')
+    if prev_dept == None:
+        prev_dept = ''
 
-# TODO - get rid of this method - we do not need it anymore
-@app.route('/regsearch', methods=['GET'])
-def search_results():
+    prev_num = request.cookies.get('prev_num')
+    if prev_num == None:
+        prev_num = ''
 
-    # prev_dept = request.cookies.get('prev_dept')
-    # if prev_dept == None:
-    #     prev_dept = ''
+    prev_area = request.cookies.get('prev_area')
+    if prev_area == None:
+        prev_area = ''
 
-    # prev_num = request.cookies.get('prev_num')
-    # if prev_num == None:
-    #     prev_num = ''
-
-    # prev_area = request.cookies.get('prev_area')
-    # if prev_area == None:
-    #     prev_area = ''
-
-    # prev_title = request.cookies.get('prev_title')
-    # if prev_title == None:
-    #     prev_title = ''
-
-    dept = request.args.get('dept')
-    number = request.args.get('number')
-    area = request.args.get('area')
-    title = request.args.get('title')
-
-    search = Search(dept, area, number, title)
+    prev_title = request.cookies.get('prev_title')
+    if prev_title == None:
+        prev_title = ''
 
     try:
-        # if we're executing a search then data will be a Search
-        db_values = create_condition_and_prepared_values(search)
-        classes = get_classes_with_condition(db_values[0],\
-            db_values[1])
-
+        details = get_class_details(class_id)
     # TODO: check the exception handling
     except ValueError as ex:
         print(str(ex), file=stderr)
-        # dump(False, write_flo)
+        return make_response(render_template('index.html'))
         # dump(str(ex), write_flo)
 
     except sqlite3.DatabaseError as ex:
         print(str(ex), file=stderr)
-        # dump(False, write_flo)
+
+        return make_response(render_template('index.html'))
         # dump('A server error occurred. '+\
         #    'Please contact the system administrator.', write_flo)
 
-    return redirect(url_for('index', classes=classes))
+    html = render_template('classdetails.html', class_id=class_id,
+        course_id=details.get_course_id(),
+        days=details.get_days(), start_time=details.get_start_time(), 
+        end_time=details.get_end_time(), building=details.get_bldg(), 
+        room=details.get_room_num(), depts_and_nums=details.get_depts_and_nums(), 
+        area=details.get_area(), title=details.get_title(), descrip=details.get_descrip(),
+        prereqs=details.get_prereqs(), profs=details.get_profs(), 
+        search_dept=prev_dept, search_num=prev_num, search_area=prev_area, 
+        search_title=prev_title)
 
-        # if dept != None:
-    #     prev_dept = dept
-    # if number != None:
-    #     prev_num = number
-    # if area != None:
-    #     prev_area = area
-    # if title != None:
-    #     prev_title = title
+    response = make_response(html)
 
-    # html = render_template('index.html', prev_dept=prev_dept, prev_num=prev_num,
-    #     prev_area=prev_area, prev_title=prev_title, classes=classes)
-
-    # response = make_response(html)
-
-    # if dept != None:
-    #     response.set_cookie('prev_dept', dept)
-    # if number != None:
-    #     response.set_cookie('prev_num', number)
-    # if area != None:
-    #     response.set_cookie('prev_area', area)
-    # if title != None:
-    #     response.set_cookie('prev_title', title)
-
-    # html = render_template('index.html', prev_search = search,
-    #     classes=classes)
-    # response = make_response(html)
-
-    # response.set_cookie('prev_dept', dept)
-    # response.set_cookie('prev_num', number)
-    # response.set_cookie('prev_area', area)
-    # response.set_cookie('prev_title', title)
-
-    # return response
+    return response

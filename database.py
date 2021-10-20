@@ -197,19 +197,12 @@ def get_class_details(class_id):
 
             cl_details = []
 
-            depts = []
-            course_nums = []
-
             while cl_row is not None:
-                depts.append(str(cl_row[1]))
-                course_nums.append(str(cl_row[2]))
+                cl_details.append(str(cl_row[1]) + " " + str(cl_row[2]))
 
                 cl_row = cursor.fetchone()
 
-            cl_details = [depts, course_nums]
-
             # courses variables
-
             stmt_str = "SELECT courseid, area, title, descrip, "\
                 + "prereqs FROM courses WHERE courseid = ? "
 

@@ -37,7 +37,7 @@ class RegClass:
         called.
         """
         return self._class_id
-    
+
     def get_dept(self):
         """
         Returns the dept of the regclass object on which it is

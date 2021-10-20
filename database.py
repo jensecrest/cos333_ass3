@@ -166,7 +166,7 @@ def get_class_details(class_id):
             classes_row = cursor.fetchone()
 
             if classes_row is None:
-                raise ValueError("no class with class id " +\
+                raise ValueError("no class with classid " +\
                                 str(class_id) + " exists")
 
             class_details = []

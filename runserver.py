@@ -7,14 +7,15 @@
 #-----------------------------------------------------------------------
 
 import argparse
-from sys import argv, exit, stderr
+import sys
+from sys import argv, stderr
 from reg import app
 
 def main():
 
     try:
-        parser = argparse.ArgumentParser(allow_abbrev=False, description=
-                            "The registrar application")
+        parser = argparse.ArgumentParser(allow_abbrev=False,
+            description="The registrar application")
         parser.add_argument("port", type=int,
             help = "the port at which the server should listen")
 
@@ -28,7 +29,7 @@ def main():
         sys.exit(2)
     except Exception as ex:
         print(argv[0] + ": " + str(ex), file=stderr)
-        exit(1)
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()

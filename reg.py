@@ -12,7 +12,6 @@ from database import create_condition_and_prepared_values,\
     get_class_details, get_classes_with_condition
 from search import Search
 
-
 #-----------------------------------------------------------------------
 
 app = Flask(__name__, template_folder='.')

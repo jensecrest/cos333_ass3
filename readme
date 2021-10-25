@@ -1,4 +1,59 @@
+jsecrest_agc2
 
-CITE:
-- used for casting non-int to int in reg.py - look at this
+Jennifer Secrest, AnneMarie Caballero, Assignment 3
+
+Jennifer Secrest's Contribution:
+
+Similar to previous assignments, we worked on a lot of parts together.
+Since I had never had experience with html, I worked a lot on those
+parts to gain the extra practice. Specifically, I put together the
+general layouts for the header, footer, and index files, as well as the
+details html files. We worked on getting the necessary variables from
+the database to html. We tested and fixed bugs together, and pair coded
+often, as usual.
+
+AnneMarie Caballero's Contribution:
+
+We pair coded most of the assignment together. Additionally, I worked
+slightly more on the Flask code, as I had less experience with that.
+I wrote the error HTML page, and collaborated with Jen on creating
+the other page. We especially tried to work on all of the Jinja together.
+Additionally, I set up the basic layout of the controller file, reg.py. 
+We debugged, worked on the important processing code, and tested 
+together.
+
+
+Help received from other people:
+
+We posted a few questions on Ed and asked a question to the COS 333
+instructors email. In addition to anything cited, we used 
+documents provided on the course page and the print-outs 
+given in class.
+
+Sources of information:
+Stated above. Given through the course or cited throughout the code.
+- used for casting non-int to int in reg.py
 https://www.w3schools.com/python/python_casting.asp
+
+Time spent on the assignment: 8-10 hours
+
+Assessment of assignment:
+
+Jennifer Secrest: I enjoyed this assignment! I liked the exposure
+to html and it was very cool to be able to so easily run and see
+how all changes affected the final product. I can also tell
+that I'm getting more comfortable with database programming.
+We were impressed by the way that it built off of our previous
+assignments!
+
+AnneMarie Caballero: I thought the assignment really helped
+me understand how all of these different technologies worked
+together. I thought it derived really naturally from the other
+assignments, so it wasn't too hard while still being really
+interesting and fun. I'm really enjoying seeing our application
+get more advanced and easier to use as we move it to these
+more modern platforms. I think this assignment really
+helped me figure out how an application like this is 
+implemented. 
+
+No known bugs.

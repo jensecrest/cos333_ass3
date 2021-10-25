@@ -27,7 +27,7 @@ def main():
         print(argv[0] + ": " + str(ex), file=stderr)
         sys.exit(2)
     except Exception as ex:
-        print(ex, file=stderr)
+        print(argv[0] + ": " + str(ex), file=stderr)
         exit(1)
 
 if __name__ == '__main__':

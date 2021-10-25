@@ -6,7 +6,7 @@
 #-----------------------------------------------------------------------
 
 import sqlite3
-from sys import stderr
+from sys import stderr, argv
 from flask import Flask, request, make_response, render_template
 from database import create_condition_and_prepared_values,\
     get_class_details, get_classes_with_condition
@@ -47,7 +47,7 @@ def index():
             db_values[1])
 
     except sqlite3.DatabaseError as ex:
-        print(str(ex), file=stderr)
+        print(argv[0] + ": " + str(ex), file=stderr)
         html = render_template('error.html', error_message=
             'A server error occurred. \
             Please contact the system administrator.')
@@ -111,7 +111,7 @@ def reg_details():
         return make_response(html)
 
     except sqlite3.DatabaseError as ex:
-        print(str(ex), file=stderr)
+        print(argv[0] + ": " + str(ex), file=stderr)
         html = render_template('error.html', error_message=
             'A server error occurred. Please contact the \
                 system administrator.')

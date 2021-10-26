@@ -22,14 +22,14 @@ class RegClass:
         self._area = class_details[3]
         self._title = class_details[4]
 
-    def __str__(self):
-        format_str = '{clsid:>5} {dept:>4} {crsnum:>6} {area:>4} '
-        format_str += '{title}'
+    # def __str__(self):
+    #     format_str = '{clsid:>5} {dept:>4} {crsnum:>6} {area:>4} '
+    #     format_str += '{title}'
 
-        return format_str.format(clsid = self._class_id,
-            dept = self._dept,
-            crsnum = self._course_num, area = self._area,
-            title = self._title)
+    #     return format_str.format(clsid = self._class_id,
+    #         dept = self._dept,
+    #         crsnum = self._course_num, area = self._area,
+    #         title = self._title)
 
     def get_class_id(self):
         """

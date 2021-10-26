@@ -22,7 +22,7 @@ def main():
         args = parser.parse_args()
         port = args.port
 
-        app.run(host='0.0.0.0', port=port, debug=True)
+        app.run(host='0.0.0.0', port=port)
 
     except argparse.ArgumentError as ex:
         print(argv[0] + ": " + str(ex), file=stderr)

@@ -18,10 +18,6 @@ class Search:
         self._area = str(area)
         self._title = str(title)
 
-    def __str__(self):
-        return '( ' + self._dept + ', ' + self._number\
-            + ', ' + self._area + ', ' + self._title + ')'
-
     def get_dept(self):
         """
         Returns the department of the Search object.
